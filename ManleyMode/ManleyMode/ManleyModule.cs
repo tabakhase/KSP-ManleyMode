@@ -227,6 +227,10 @@ public class ManleyModule : PartModule
                     message += "Your PE is " + formatDistance(vessel.orbit.PeA) + "\n";
                     message += "Time till PE is " + KSPUtil.PrintTime((int)Math.Abs(vessel.orbit.timeToPe), 5, false) + "\n";
                 }
+                if (vessel.orbit.nextPatch != null && vessel.orbit.nextPatch.referenceBody != null)
+                {
+                    message += "Leaving this orbit towards " + vessel.orbit.nextPatch.referenceBody.theName + " in " + KSPUtil.PrintTime((int)Math.Abs(vessel.orbit.nextPatch.StartUT - Planetarium.GetUniversalTime()), 5, false) + "\n";
+                }
                 break;
         }
         addLog(message);
